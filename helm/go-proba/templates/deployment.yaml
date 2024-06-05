@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "go-proba.fullname" . }}
+  labels:
+    app: {{ include "go-proba.name" . }}
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: {{ include "go-proba.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "go-proba.name" . }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 8080
