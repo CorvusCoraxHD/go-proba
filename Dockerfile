@@ -1,9 +1,8 @@
 # Use the official Golang image as base
-FROM golang:1.20 AS builder
+FROM golang:1.22 AS builder
 
 # Set the Current Working Directory inside the container
 WORKDIR /app
-
 
 # Copy the source code from the current directory to the Working Directory inside the container
 COPY . .
