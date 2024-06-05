@@ -1,0 +1,22 @@
+image:
+  repository: gcr.io/your-gcp-project-id/go-proba
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8080
+
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  hosts:
+    - host: go-proba.your-domain.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - hosts:
+        - go-proba.your-domain.com
+      secretName: go-proba-tls
