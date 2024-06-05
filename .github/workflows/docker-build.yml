@@ -23,6 +23,8 @@ jobs:
 
     - name: Set up Google Cloud SDK
       uses: google-github-actions/setup-gcloud@v0
+      with:
+        project_id: ${{ secrets.GCP_PROJECT_ID }}
 
     - name: Configure Docker
       run: gcloud auth configure-docker
@@ -33,4 +35,20 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: gcr.io/${{ secrets.GCP_PROJECT_ID }}/hello-world-go:latest
+        tags: gcr.io/${{ secrets.GCP_PROJECT_ID }}/go-proba:latest
+
+    - name: Download cluster-issuer.yaml
+      run: |
+        curl -o cluster-issuer.yaml https://raw.githubusercontent.com/CorvusCoraxHD/go-proba/main/cluster-issuer.yaml
+
+    - name: Set up kubectl
+      uses: azure/setup-kubectl@v1
+      with:
+        version: v1.21.0
+
+    - name: Deploy to GKE
+      env:
+        KUBECONFIG: ${{ secrets.KUBECONFIG }}
+      run: |
+        kubectl apply -f cluster-issuer.yaml
+        helm upgrade --install go-proba ./helm/go-proba
