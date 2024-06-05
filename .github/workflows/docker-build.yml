@@ -39,7 +39,7 @@ jobs:
 
     - name: Download cluster-issuer.yaml
       run: |
-        curl -o cluster-issuer.yaml https://raw.githubusercontent.com/CorvusCoraxHD/go-proba/main/cluster-issuer.yaml
+        curl -o cluster-issuer.yaml https://raw.githubusercontent.com/corvuscoraxhd/go-proba/main/cluster-issuer.yaml
 
     - name: Set up kubectl
       uses: azure/setup-kubectl@v1
