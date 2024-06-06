@@ -1,5 +1,5 @@
 image:
-  repository: us-docker.pkg.dev/hypnotic-guard-425421-m8/go-proba
+  repository: ghcr.io/corvuscoraxhd/go-proba
   tag: latest
   pullPolicy: IfNotPresent
 
