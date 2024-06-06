@@ -5,7 +5,7 @@ metadata:
 spec:
   tls:
   - hosts:
-    - example.com
+    - placeholder.com
     secretName: example-tls-secret
   rules:
   - host: placeholder.com
