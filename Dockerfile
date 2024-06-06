@@ -1,29 +1,24 @@
-# Start from a base Golang image
-FROM golang:1.21 AS builder
+# Use a Golang base image
+FROM golang:1.17 AS builder
 
-# Set the current working directory inside the container
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the Go modules files
+# Copy the Go module files and build dependencies
 COPY go.mod ./
-
-# Download and install dependencies
 RUN go mod download
 
-# Copy the rest of the application source code
+# Copy the source code into the container
 COPY . .
 
-# Build the Go application
-RUN go build -o main .
+# Build the static binary
+RUN CGO_ENABLED=0 GOOS=linux go build -o main -ldflags '-extldflags "-static"'
 
-# Start from a smaller base image
-FROM gcr.io/distroless/base-debian10
+# Use a minimal base image for the final container
+FROM scratch
 
-# Copy the built executable from the previous stage
-COPY --from=builder /app/main /
+# Copy the static binary from the builder stage
+COPY --from=builder /app/main /main
 
 # Set the entry point for the container
 ENTRYPOINT ["/main"]
-
-# Expose the port that the application listens on
-EXPOSE 8080
