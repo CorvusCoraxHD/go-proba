@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Build and Push Docker Image
 
 on:
   push:
@@ -8,12 +8,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      
+      - name: Login to GitHub Container Registry
+        run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u corvuscoraxhd --password-stdin
 
-      - name: Build Docker image
+      - name: Build and Push Docker image
         run: |
           docker build -t ghcr.io/corvuscoraxhd/go-proba:latest .
           docker push ghcr.io/corvuscoraxhd/go-proba:latest
