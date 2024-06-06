@@ -20,7 +20,7 @@ jobs:
           docker build -t ghcr.io/corvuscoraxhd/go-proba:latest .
           docker push ghcr.io/corvuscoraxhd/go-proba:latest
 
-deploy:
+  deploy:
     runs-on: ubuntu-latest
     needs: build
     steps:
