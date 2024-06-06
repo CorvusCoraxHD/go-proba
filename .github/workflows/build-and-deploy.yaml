@@ -68,4 +68,4 @@ jobs:
           kubectl apply -f kubernetes/deployment.yaml
           kubectl apply -f kubernetes/service.yaml
           kubectl apply -f kubernetes/ingress.yaml
-          kubectl apply -f kubernetes/cert-manager.yaml
+          kubectl get deployment cert-manager -n cert-manager || kubectl apply -f kubernetes/cert-manager.yaml
