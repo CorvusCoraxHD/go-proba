@@ -38,8 +38,14 @@ jobs:
           version: 'latest'
           project_id: go-proba
 
-      - name: Get GKE credentials
-        run: gcloud container clusters get-credentials go-proba-cluster --zone us-west1-a --project hypnotic-guard-425421-m8
+      - name: Install gke-gcloud-auth-plugin
+        run: |
+          sudo apt-get update && sudo apt-get install -y google-cloud-sdk-gke-gcloud-auth-plugin
+
+      - name: Configure gke-gcloud-auth-plugin
+        run: |
+        gcloud components install gke-gcloud-auth-plugin
+        gcloud container clusters get-credentials go-proba-cluster --zone us-west1-a --project hypnotic-guard-425421-m8
 
       - name: Apply Kubernetes Manifests
         run: |
