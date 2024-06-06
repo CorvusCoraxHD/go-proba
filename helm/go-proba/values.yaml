@@ -1,5 +1,5 @@
 image:
-  repository: gcr.io/your-gcp-project-id/go-proba
+  repository: gcr.io/hypnotic-guard-425421-m8/go-proba
   tag: latest
   pullPolicy: IfNotPresent
 
