@@ -44,8 +44,8 @@ jobs:
 
       - name: Configure gke-gcloud-auth-plugin
         run: |
-        gcloud components install gke-gcloud-auth-plugin
-        gcloud container clusters get-credentials go-proba-cluster --zone us-west1-a --project hypnotic-guard-425421-m8
+          gcloud components install gke-gcloud-auth-plugin
+          gcloud container clusters get-credentials go-proba-cluster --zone us-west1-a --project hypnotic-guard-425421-m8
 
       - name: Apply Kubernetes Manifests
         run: |
