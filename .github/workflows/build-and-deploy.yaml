@@ -27,11 +27,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GKE_CREDENTIALS }}
+
       - name: Setup gcloud
         uses: google-github-actions/setup-gcloud@v2
         with:
           version: 'latest'
-          service_account_key: ${{ secrets.GKE_CREDENTIALS }}
           project_id: go-proba
 
       - name: Get GKE credentials
