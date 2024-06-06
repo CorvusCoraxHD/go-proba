@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-proba-deployment
+spec:
+  replicas: 3  # Number of desired replicas
+  selector:
+    matchLabels:
+      app: go-proba
+  template:
+    metadata:
+      labels:
+        app: go-proba
+    spec:
+      containers:
+      - name: goproba
+        image: ghcr.io/corvuscoraxhd/go-proba:latest  # Reference to your Docker image
+        ports:
+        - containerPort: 8080  # Port on which your application listens
