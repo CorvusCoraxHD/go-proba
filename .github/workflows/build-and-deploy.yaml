@@ -47,6 +47,18 @@ jobs:
           gcloud components install gke-gcloud-auth-plugin
           gcloud container clusters get-credentials go-proba-cluster --zone us-west1-a --project hypnotic-guard-425421-m8
 
+      - name: Install Helm
+        run: |
+          curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
+      - name: Add Jetstack Helm repo
+        run: helm repo add jetstack https://charts.jetstack.io && helm repo update
+
+      - name: Install cert-manager
+        run: |
+          kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.8.0/cert-manager.crds.yaml
+          helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.8.0
+
       - name: Apply Kubernetes Manifests
         run: |
           kubectl apply -f kubernetes/deployment.yaml
