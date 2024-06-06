@@ -38,8 +38,7 @@ jobs:
           version: 'latest'
           project_id: go-proba
 
-      - name: Install gke-gcloud-auth-plugin
-        uses: cobraz/setup-gke-gcloud-auth-plugin@v1
+      - uses: simenandre/setup-gke-gcloud-auth-plugin@v1
 
       - name: Configure gke-gcloud-auth-plugin
         run: |
