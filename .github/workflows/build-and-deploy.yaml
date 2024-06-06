@@ -54,11 +54,15 @@ jobs:
       - name: Add Jetstack Helm repo
         run: helm repo add jetstack https://charts.jetstack.io && helm repo update
 
-      - name: Install cert-manager
+      - name: Install or Update cert-manager
         run: |
           kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.8.0/cert-manager.crds.yaml
-          helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.8.0
-
+          if helm ls --namespace cert-manager | grep cert-manager; then
+            helm upgrade cert-manager jetstack/cert-manager --namespace cert-manager --version v1.8.0
+          else
+            helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.8.0
+          fi
+          
       - name: Apply Kubernetes Manifests
         run: |
           kubectl apply -f kubernetes/deployment.yaml
