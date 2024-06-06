@@ -38,7 +38,9 @@ jobs:
           version: 'latest'
           project_id: go-proba
 
-      - uses: simenandre/setup-gke-gcloud-auth-plugin@v1
+      - name: Install gke-gcloud-auth-plugin
+        run: |
+          gcloud components install gke-gcloud-auth-plugin
 
       - name: Configure gke-gcloud-auth-plugin
         run: |
