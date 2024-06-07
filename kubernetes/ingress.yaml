@@ -9,7 +9,7 @@ metadata:
 spec:
   tls:
   - hosts:
-    - placeholder.com
+    - corvus.iz.rs
     secretName: tls-secret
   rules:
   - host: corvus.iz.rs
