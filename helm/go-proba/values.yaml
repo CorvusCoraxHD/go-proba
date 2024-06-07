@@ -12,11 +12,11 @@ ingress:
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
   hosts:
-    - host: go-proba.your-domain.com
+    - host: go-proba.corvus.iz.rs
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls:
     - hosts:
-        - go-proba.your-domain.com
+        - go-proba.corvus.iz.rs
       secretName: go-proba-tls
