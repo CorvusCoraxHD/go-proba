@@ -12,7 +12,7 @@ spec:
     - placeholder.com
     secretName: tls-secret
   rules:
-  - host: placeholder.com
+  - host: corvus.iz.rs
     http:
       paths:
       - path: /
