@@ -10,7 +10,7 @@ spec:
   tls:
   - hosts:
     - corvus.iz.rs
-    secretName: tls-secret-z89rd
+    secretName: tls-secret-corvus
   rules:
   - host: corvus.iz.rs
     http:
