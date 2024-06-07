@@ -6,7 +6,8 @@ metadata:
     kubernetes.io/ingress.class: "gce"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
     kubernetes.io/ingress.global-static-ip-name: "34.128.173.45"
-    cert-manager.io/issue-temporary-certificate: "true"
+    cert-manager.io/issue-temporary-certificate:  "true"
+    acme.cert-manager.io/http01-edit-in-place: "true"
 spec:
   tls:
   - hosts:
