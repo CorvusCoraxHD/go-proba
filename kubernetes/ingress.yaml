@@ -2,11 +2,15 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: go-ingress
+  annotations:
+    kubernetes.io/ingress.class: "gce"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    kubernetes.io/ingress.global-static-ip-name: "34.128.173.45"
 spec:
   tls:
   - hosts:
     - placeholder.com
-    secretName: example-tls-secret
+    secretName: tls-secret
   rules:
   - host: placeholder.com
     http:
