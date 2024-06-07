@@ -19,4 +19,4 @@ ingress:
   tls:
     - hosts:
         - go-proba.corvus.iz.rs
-      secretName: go-proba-tls
+      secretName: tls-secret-corvus
