@@ -11,10 +11,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - corvus.iz.rs
+    - kubes.cc
     secretName: tls-secret-corvus
   rules:
-  - host: corvus.iz.rs
+  - host: kubes.cc
     http:
       paths:
       - path: /
