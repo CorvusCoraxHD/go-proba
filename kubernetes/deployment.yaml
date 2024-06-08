@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: go-proba-deployment
+  labels:
+    app: go-proba
 spec:
   replicas: 3
   selector:
@@ -16,4 +18,4 @@ spec:
       - name: goproba
         image: ghcr.io/corvuscoraxhd/go-proba:latest
         ports:
-        - containerPort: 8080  # Port on which your application listens
+        - containerPort: 8080
