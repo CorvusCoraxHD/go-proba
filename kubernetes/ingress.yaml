@@ -5,13 +5,13 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: "gce"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    kubernetes.io/ingress.global-static-ip-name: "34.128.173.45"
+    kubernetes.io/ingress.global-static-ip-name: "my-static-ip"
     cert-manager.io/issue-temporary-certificate:  "true"
     acme.cert-manager.io/http01-edit-in-place: "true"
 spec:
   tls:
   - hosts:
-    - kubes.cc
+    - go-proba.kubes.cc
     secretName: tls-secret-corvus
   rules:
   - host: go-proba.kubes.cc
