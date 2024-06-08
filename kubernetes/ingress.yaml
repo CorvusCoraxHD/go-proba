@@ -14,11 +14,11 @@ spec:
     - kubes.cc
     secretName: tls-secret-corvus
   rules:
-  - host: kubes.cc
+  - host: go-proba.kubes.cc
     http:
       paths:
       - path: /
-        pathType: Prefix
+        pathType: ImplementationSpecific
         backend:
           service:
             name: go-proba-service
